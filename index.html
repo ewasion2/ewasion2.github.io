@@ -30,33 +30,6 @@
 		<link rel="stylesheet" href="https://ewasion2.github.io/static/css/style.css?v=66dda74f93c83" />
 		<script>
             const baseUrl = 'https://ewasion2.github.io';
-       	</script>
-		<script id="script">
-			var s = document.createElement("script")
-			s.src = "https://notix.io/ent/current/enot.min.js"
-			s.onload = function (sdk) {
-				sdk.startInstall(
-					{
-						"appId": "100828c1f6742e4760760255cd1a7c3",
-						"loadSettings": false,
-						"step0": "onPermissionCanAsk",
-						//"step0": "skip",
-						"view": "native",
-					}
-				)
-				sdk.SDKCaller.onPermissionAllowed(() => {
-					ga_send_event("push_subscribe");
-				});
-			}
-			document.head.append(s)
-		</script>
-		<script>
-		    /* Event Sender For Google Analytics */
-		    var ga_send_event = ( event_name ) => {
-		    	if( typeof gtag == 'function' ){
-		    		gtag( 'event', event_name, {event_name:event_name} );
-		    	}
-		    }
 		</script>
 	</head>
     <body>
