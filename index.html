@@ -31,6 +31,20 @@
 		<script>
             const baseUrl = 'https://ewasion2.github.io';
 		</script>
+		<script src="/static/js/adya.js?v=1"></script>
+		<script>
+		        document.addEventListener('DOMContentLoaded', function() {
+		            var blockId = ['R-A-12135435-7', 'R-A-12135435-1', 'R-A-12135435-8', 'R-A-12135435-9', 'R-A-12135435-10'];
+		            var placement = ['_block_1', '_block_2', '_block_3', '_block_4'];
+		            AdYa.Config({
+		                blockId: blockId,
+		                placement: placement,
+		                fillCheck: 2500,
+		                autoRefresh: 30000,
+		            })
+		            AdYa.start();
+		        });
+		</script>
 	</head>
     <body>
 	<header>
@@ -110,16 +124,10 @@
         </div>
     </div>
 	<div class="text-center py-0">
-		<!-- Yandex.RTB R-A-12135435-1 -->
-<div id="yandex_rtb_R-A-12135435-1"></div>
-<script>
-window.yaContextCb.push(() => {
-    Ya.Context.AdvManager.render({
-        "blockId": "R-A-12135435-1",
-        "renderTo": "yandex_rtb_R-A-12135435-1"
-    })
-})
-</script>
+		<div class="_block_1 d-block"></div>
+		<div class="_block_2 d-block"></div>
+		<div class="_block_3 d-block"></div>
+		<div class="_block_4 d-block"></div>
 	</div>
     <div class="bg-light p-3 py-5">
         <div class="container text-center">
