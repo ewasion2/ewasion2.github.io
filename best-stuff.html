@@ -1,9 +1,6 @@
 <!doctype html>
 <html lang="en">
 	<head>
-		<!-- Yandex.RTB -->
-		<script>window.yaContextCb=window.yaContextCb||[]</script>
-		<script src="https://yandex.ru/ads/system/context.js" async></script>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="yandex-verification" content="96f8b589379aede8" />
@@ -30,21 +27,42 @@
 		<script>
             const baseUrl = 'https://ewasion2.github.io';
 		</script>
+		<script src="https://ewasion2.github.io/static/js/yan-ads-manager.min.js"></script>
 		<script>
-			var AdYa={placement:[],blockId:[],fillCheck:3e3,autoRefresh:6e4,Config:(t={})=>{t.hasOwnProperty("blockId")&&t.blockId.length>0&&t.blockId.forEach((t=>AdYa.blockId.push(t))),t.hasOwnProperty("placement")&&t.placement.length>0&&t.placement.forEach((t=>AdYa.placement.push(t))),t.hasOwnProperty("fillCheck")&&t.fillCheck>0&&(AdYa.fillCheck=t.fillCheck)},fn:{randomNumber:(t,e)=>Math.floor(Math.random()*(e-t+1)+t),log:t=>{console.log(t)}},getBlockId:()=>AdYa.blockId[AdYa.fn.randomNumber(0,AdYa.blockId.length-1)],renderAd:(t,e)=>{var n=document.createElement("iframe");n.setAttribute("class","AdYa"),n.setAttribute("style","width:100%;max-height:auto;min-height:300px;border:0px;scrolling:off;"),n.setAttribute("src","");var a=`\n\t\t\t\t<!doctype html>\n\t\t\t\t<html lang="ru">\n\t\t\t\t\t<head>\n\t\t\t\t\t\t\x3c!-- Yandex.RTB --\x3e\n\t\t\t\t\t\t<script>window.yaContextCb=window.yaContextCb||[]<\/script>\n\t\t\t\t\t\t<script src="https://yandex.ru/ads/system/context.js" async><\/script>\n\t\t\t\t\t\t<meta charset="UTF-8" />\n\t\t\t\t\t\t<meta name="viewport" content="width=device-width, initial-scale=1" />\n\t\t\t\t\t\t<title>${document.title}</title>\n\t\t\t\t\t\t<style>\n\t\t\t\t\t\t\t* {\n\t\t\t\t\t\t\t\tpadding: 0;\n\t\t\t\t\t\t\t\tmargin: 0;\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t</style>\n\t\t\t\t\t</head>\n\t\t\t\t\t<body>\n\t\t\t\t\t\t<div id="AdYa">\n\t\t\t\t\t\t\t\x3c!-- Yandex.RTB ${e} --\x3e\n\t\t\t\t\t\t\t<div id="yandex_rtb_${e}"></div>\n\t\t\t\t\t\t\t<script>\n\t\t\t\t\t\t\twindow.yaContextCb.push(() => {\n\t\t\t\t\t\t\t\tYa.Context.AdvManager.render({\n\t\t\t\t\t\t\t\t\t"blockId": "${e}",\n\t\t\t\t\t\t\t\t\t"renderTo": "yandex_rtb_${e}"\n\t\t\t\t\t\t\t\t})\n\t\t\t\t\t\t\t})\n\t\t\t\t\t\t\t<\/script>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<script>\n\t\t\t\t\t\t\tvar fillCheck = ${AdYa.fillCheck};\n\t\t\t\t\t\t\tvar autoRefresh = ${AdYa.autoRefresh};\n\t\t\t\t\t\t\tvar blockId = "${e}";\n\t\t\t\t\t\t\tvar placement = "${t}";\n\t\t\t\t\t\t\twindow.addEventListener('load', () => {\n\t\t\t\t\t\t\t\tif( fillCheck > 0 ){\n\t\t\t\t\t\t\t\t\tvar AdYaTimer = setInterval(() => {\n\t\t\t\t\t\t\t\t\t\tvar AdYaLoaded = document.querySelector('div[id^="yandex_rtb_"]').childNodes.length;\n\t\t\t\t\t\t\t\t\t\tif(  !AdYaLoaded ){\n\t\t\t\t\t\t\t\t\t\t\tparent.AdYa.renderAd( placement, blockId );\n\t\t\t\t\t\t\t\t\t\t\tclearInterval( AdYaTimer );\n\t\t\t\t\t\t\t\t\t\t}else if( AdYaLoaded ){\n\t\t\t\t\t\t\t\t\t\t\tclearInterval( AdYaTimer );\n\t\t\t\t\t\t\t\t\t\t\tif( autoRefresh > 0 ){\n\t\t\t\t\t\t\t\t\t\t\t\tvar autoRefreshTime = setTimeout(() => {\n\t\t\t\t\t\t\t\t\t\t\t\t\tparent.AdYa.renderAd( placement, parent.AdYa.getBlockId() );\n\t\t\t\t\t\t\t\t\t\t\t\t\tclearInterval( autoRefreshTime );\n\t\t\t\t\t\t\t\t\t\t\t\t}, autoRefresh );\n\t\t\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\t\t}, fillCheck );\n\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t})\n\t\t\t\t\t\t<\/script>\n\t\t\t\t\t</body>\n\t\t\t\t</html>\n\t\t\t`;if(n.setAttribute("srcDoc",a),t){t=t.replace(".","");var d=document.querySelector("."+t);d&&(d.innerHTML="",d.appendChild(n))}},start:()=>{AdYa.placement.length>0&&AdYa.blockId.length>0&&AdYa.placement.forEach((t=>{AdYa.renderAd(t,AdYa.getBlockId())}))}};
-		</script>
-		<script>
-		        document.addEventListener('DOMContentLoaded', function() {
-		            var blockId = ['R-A-12135435-7', 'R-A-12135435-1', 'R-A-12135435-8', 'R-A-12135435-9', 'R-A-12135435-10'];
-		            var placement = ['top-header', 'bottom-footer', 'right-sidebar', 'left-sidebar', 'middle-content', 'top-content', 'bottom-content', 'top-sidebar', 'bottom-sidebar', 'middle-sidebar'];
-		            AdYa.Config({
-		                blockId: blockId,
-		                placement: placement,
-		                fillCheck: 2500,
-		                autoRefresh: 30000,
-		            })
-		            AdYa.start();
-		        });
+			const yanAds = new YANAdsManager({
+			    blockIds: ['R-A-12135435-7', 'R-A-12135435-1', 'R-A-12135435-8', 'R-A-12135435-9', 'R-A-12135435-10'], // Your YAN block IDs
+			    auto_refresh: true,
+			    refresh_time: 30, // seconds
+			    floating_banner: {
+			        enable: true,
+			        delay: 1, // seconds
+			        delayAfterClose: 125, // seconds
+			        max_width: '300px',
+			        max_height: '250px'
+			    },
+			    anchor_ads: {
+			        enable: true,
+			        delay: 1, // seconds
+			        delayAfterClose: 65, // seconds
+			        max_width: '100%',
+			        max_height: '100px'
+			    },
+			    reward_ads: {
+			        enable: true,
+			        trigger: '#reward-ad-trigger', // Selector or element
+			        auto_close: false,
+			        watch_time: 10, // seconds
+			        max_width: '60%',
+			        max_height: '80%',
+			        title: "Advertisements",
+			        on_close: function(isWatched) {
+			            console.log('Reward ad closed. Watched:', isWatched);
+			            if (isWatched) {
+			                // Grant access or reward
+			            }
+			        }
+			    }
+			});
 		</script>
 		<style>
 		        h2 {
@@ -69,16 +87,14 @@
     <body>
     <h1 class="p-2 m-0 bg-warning text-dark text-center fw-bold d-block mb-2 shadow-sm fs-5">Best Stuff</h1>
     <div class="d-block text-center">
-        <div class="top-header"></div>
-        <div class="bottom-footer"></div>
-        <div class="right-sidebar"></div>
-        <div class="left-sidebar"></div>
-        <div class="middle-content"></div>
-        <div class="top-content"></div>
-        <div class="bottom-content"></div>
-        <div class="top-sidebar"></div>
-        <div class="bottom-sidebar"></div>
-        <div class="middle-sidebar"></div>
+        <div class="AdYan" data-max-height="300px"></div>
+        <div class="AdYan" data-max-width="728px" data-max-height="90px"></div>
+        <div class="AdYan" data-max-width="728px" data-max-height="100px"></div>
+        <div class="AdYan" data-max-width="750px" data-max-height="300px"></div>
+        <div class="AdYan" data-max-width="320px" data-max-height="100px"></div>
+        <div class="AdYan" data-max-width="320px" data-max-height="50px"></div>
+        <button class="my-3 btn btn-lg btn-primary" id="reward-ad-trigger">Rewarded Ads</button>
+        <div class="AdYan"></div>
     </div>
 
 <div class="container p-2 shadow-sm border rounded-3">
@@ -133,27 +149,7 @@
 
         <p>Join us today and discover endless possibilities in one place. Your ultimate hub for everything you need is here!</p>
     </div>
-	    
-	<!-- Yandex.RTB R-A-12135435-5 -->
-	<script>
-	window.yaContextCb.push(() => {
-	    Ya.Context.AdvManager.render({
-	        "blockId": "R-A-12135435-5",
-	        "type": "floorAd",
-	        "platform": "desktop"
-	    })
-	})
-	</script>
-	<!-- Yandex.RTB R-A-12135435-2 -->
-	<script>
-	window.yaContextCb.push(() => {
-	    Ya.Context.AdvManager.render({
-	        "blockId": "R-A-12135435-2",
-	        "type": "floorAd",
-	        "platform": "touch"
-	    })
-	})
-	</script>
+
 		<div class="shadow-sm mb-0 bg-dark">
 			<footer class="py-3 container">
 				<p class="text-center text-light d-block">© 2024 <b>Ewasion</b> All Rights Are Reserved.</p>
