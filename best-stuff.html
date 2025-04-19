@@ -29,40 +29,42 @@
 		</script>
 		<script src="https://ewasion2.github.io/static/js/yan-ads-manager.min.js"></script>
 		<script>
-			const yanAds = new YANAdsManager({
-			    blockIds: ['R-A-12135435-7', 'R-A-12135435-1', 'R-A-12135435-8', 'R-A-12135435-9', 'R-A-12135435-10'], // Your YAN block IDs
-			    auto_refresh: true,
-			    refresh_time: 30, // seconds
-			    floating_banner: {
-			        enable: true,
-			        delay: 1, // seconds
-			        delayAfterClose: 125, // seconds
-			        max_width: '300px',
-			        max_height: '250px'
-			    },
-			    anchor_ads: {
-			        enable: true,
-			        delay: 1, // seconds
-			        delayAfterClose: 65, // seconds
-			        max_width: '100%',
-			        max_height: '100px'
-			    },
-			    reward_ads: {
-			        enable: true,
-			        trigger: '#reward-ad-trigger', // Selector or element
-			        auto_close: false,
-			        watch_time: 10, // seconds
-			        max_width: '60%',
-			        max_height: '80%',
-			        title: "Advertisements",
-			        on_close: function(isWatched) {
-			            console.log('Reward ad closed. Watched:', isWatched);
-			            if (isWatched) {
-			                // Grant access or reward
-			            }
-			        }
-			    }
-			});
+			window.addEventListener('DOMContentLoaded', () => {
+				const yanAds = new YANAdsManager({
+				    blockIds: ['R-A-12135435-7', 'R-A-12135435-1', 'R-A-12135435-8', 'R-A-12135435-9', 'R-A-12135435-10'], // Your YAN block IDs
+				    auto_refresh: true,
+				    refresh_time: 30, // seconds
+				    floating_banner: {
+				        enable: true,
+				        delay: 1, // seconds
+				        delayAfterClose: 125, // seconds
+				        max_width: '300px',
+				        max_height: '250px'
+				    },
+				    anchor_ads: {
+				        enable: true,
+				        delay: 1, // seconds
+				        delayAfterClose: 65, // seconds
+				        max_width: '100%',
+				        max_height: '100px'
+				    },
+				    reward_ads: {
+				        enable: true,
+				        trigger: '#reward-ad-trigger', // Selector or element
+				        auto_close: false,
+				        watch_time: 10, // seconds
+				        max_width: '60%',
+				        max_height: '80%',
+				        title: "Advertisements",
+				        on_close: function(isWatched) {
+				            console.log('Reward ad closed. Watched:', isWatched);
+				            if (isWatched) {
+				                // Grant access or reward
+				            }
+				        }
+				    }
+				});
+			})
 		</script>
 		<style>
 		        h2 {
