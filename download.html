@@ -181,12 +181,12 @@
 				box-shadow: 0 6px 20px rgba(255, 176, 0, 0.6);
 			}
 			.file-ready-card {
-				border-top: 5px solid #FFB000;
+				border-top: 5px solid var(--bs-primary);
 			}
 		</style>
 	</head>
 	<body>
-		<nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
+		<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
 			<div class="container">
 				<a class="navbar-brand" href="#">
 					<i class="bi bi-cloud-arrow-down-fill me-2"></i>File Downloader
@@ -214,13 +214,13 @@
 					<h6 class="fs-6 fw-bold text-dark">Download link will expire in <span class="timerr text-primary">10 minutes</span></h6>
 				</div>
 				<div class="dl-link-container my-3">
-					<button class="btn btn-download m-auto" id="gen_link" onclick="gen_link()" style="max-width:300px;width:100%"><i class="bi bi-download me-2"></i> Download</button>
+					<button class="btn btn-md btn-primary m-auto" id="gen_link" onclick="gen_link()" style="max-width:300px;width:100%"><i class="bi bi-download me-2"></i> Download</button>
 					<div id="get_link"></div>
 				</div>
 				<small style="margin-top: 10px;">Click <b>"Download"</b> button to generate download link for your file.</small>
 				<small style="margin-top: 10px;" class="d-block mb-2 fw-bold">How to Download?</small>
 				<button class="btn btn-warning btn-sm rounded-pill shadow-sm px-3 fw-bold" onclick="watch_video()"><i class="bi bi-play-circle-fill me-2"></i> Watch Video</button>
-				<div class="text-center">
+				<div class="text-center mt-2">
 					<script type="text/javascript">
 						atOptions = {
 							'key' : '50058fa9143b81ad7fd98fca1ed97907',
