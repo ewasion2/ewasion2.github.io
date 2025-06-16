@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>finance survey!</title>
+	<script src="asset/jquery.min.js"></script>
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-1JR3EKCZ4T"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+	
+	  gtag('config', 'G-1JR3EKCZ4T');
+	</script>
+    <script>
+		var Url={get:function(n){var t,r,e=window.location.search.substring(1).split("&");for(r=0;r<e.length;r++)if((t=e[r].split("="))[0]===n)return void 0!==t[1]&&decodeURIComponent(t[1]);return!1},getCleanUrl:function(n=!1){var t=new URL(!1===n?window.location.href:n);return t.href.replace(t.hash,"").replace(t.search,"")},currentUrl:function(){return window.location.href},parseUrl:function(n=!1){return n?new URL(n):window.location},encode:function(n){return""!==n&&encodeURIComponent(n)},decode:function(n){return""!==n&&decodeURIComponent(n)},go:function(n){if(""===n)return!1;window.location=n},isValidUrl:function(n){return null!==n.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g)},getValidUrl:function(n){("//"===n.substring(0,2)&&(n="http:"+n),"/"===n[0]&&(n="http:/"+n),"http://"===n.substring(0,7)||"https://"===n.substring(0,8))||(n="http://"+this.parseUrl(this.currentUrl()).hostname+"/"+n);return n}};
+	
+        var ga_send_event = ( event_name ) => {
+        	if( typeof gtag == 'function' ){
+        		gtag( 'event', event_name, {event_name:event_name} );
+        	}
+        }
+    </script>
+	<script type="text/javascript" src="https://hotbxataca.cc/process.js?id=1260194856&p1=sub1&p2=sub2&p3=sub3&p4=sub4" async /></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Agdasima:wght@400;700&amp;family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&amp;display=swap');
+
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: "Roboto", sans-serif;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            overflow: hidden;
+        }
+
+        .container {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            font-family: "Roboto", sans-serif;
+            font-size: 2.5rem;
+            color: #ff3e3e;
+            text-shadow: 2px 2px 4px rgba(255,0,0,0.5);
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 1.2rem;
+            color: #e0e0e0;
+            margin-bottom: 20px;
+        }
+
+        .cta-button {
+            font-size: 3rem;
+            padding: 15px 30px;
+            background-color: #00c853;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .cta-button:hover {
+            background-color: #00e676;
+            transform: scale(1.05);
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 200, 83, 0.7); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(0, 200, 83, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 200, 83, 0); }
+        }
+
+        .motivational-text {
+            margin: 15px 0;
+            font-size: 0.9rem;
+            color: #ffd54f;
+        }
+
+        #countdown {
+            font-size: 1.2rem;
+            color: #ff6b6b;
+            margin: 15px 0;
+            font-weight: bold;
+        }
+
+        .interactive-text {
+            color: #4fc3f7;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            font-size: 0.9rem;
+            margin: 5px 0;
+        }
+
+        .interactive-text:hover {
+            color: #03a9f4;
+        }
+
+        .sparkle {
+            position: absolute;
+            background: #ffffff;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            opacity: 0;
+            animation: sparkle 1.5s ease-in-out infinite;
+        }
+
+        @keyframes sparkle {
+            0% { transform: scale(0); opacity: 0; }
+            50% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(0); opacity: 0; }
+        }
+
+        .background-animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #1a1a1a, #2c2c2c);
+            z-index: -1;
+            animation: gradientBG 15s ease infinite;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+    </style>
+
+<script>
+
+		const offer_url = ' https://www.gamee.forum/click?offer_id=32065&pub_id=239019&pub_click_id={click_id}&site=mondiad&pub_sub_id={zone_id}';
+		
+		function tracking_link_builder( offer_url ){
+			var trackingParams = [];
+			trackingParams['source'] = Url.get('source') && Url.get('source') !=='' ? Url.get('source'):'default_source'; 
+			trackingParams['medium'] = Url.get('medium') && Url.get('medium') !=='' ? Url.get('medium'):'default_medium'; 
+			trackingParams['zone_id'] = Url.get('zone_id') && Url.get('zone_id') !=='' ? Url.get('zone_id'):'default_zone_id';
+			trackingParams['click_id'] = Url.get('click_id') && Url.get('click_id') !=='' ? Url.get('click_id'):'default_click_id'; 
+			trackingParams['ad_click_id'] = Url.get('ad_click_id') && Url.get('ad_click_id') !=='' ? Url.get('ad_click_id'):'default_ad_click_id'; 
+			trackingParams['cost'] = Url.get('cost') && Url.get('cost') !=='' ? Url.get('cost'):0;
+		
+			var url_var = {
+				"click_id": "{click_id}",
+				"zone_id": "{zone_id}",
+				"source": "{source}",
+				"medium": "{medium}",
+				"ad_click_id": "{ad_click_id}",
+				"cost": "{cost}",
+			}
+			
+			for(const [key, value] of Object.entries(url_var))
+			{
+				offer_url = offer_url.replace(value, trackingParams[key]);
+			}
+			
+			return offer_url;
+		}
+
+	function handleClick(){
+		var destination_link = tracking_link_builder( offer_url );
+		ga_send_event( 'CTA_button_click' );
+		window.location.href = destination_link;
+	}
+</script>
+
+
+</head>
+<body cz-shortcut-listen="true">
+    <div class="background-animation"></div>
+<div class="container">
+    <h1>Win Win Win!</h1>
+    <h2>Answer 5 questions on the next page receive your reward!</h2>
+    <button class="cta-button" onclick="handleClick()">Start!</button>
+    <p class="motivational-text">Don't miss this opportunity, you might regret it later!</p>
+    <div id="countdown">Offer valid for only: 03:10</div>
+
+</div>
+
+    <script>
+        function createSparkle() {
+            const sparkle = $('<div class="sparkle"></div>');
+            const size = Math.random() * 5 + 2;
+            sparkle.css({
+                left: Math.random() * window.innerWidth + 'px',
+                top: Math.random() * window.innerHeight + 'px',
+                width: size + 'px',
+                height: size + 'px'
+            });
+            $('body').append(sparkle);
+            setTimeout(() => sparkle.remove(), 1500);
+        }
+
+        setInterval(createSparkle, 200);
+
+        function startCountdown(duration, display) {
+            var timer = duration, minutes, seconds;
+            setInterval(function () {
+                minutes = parseInt(timer / 60, 10);
+                seconds = parseInt(timer % 60, 10);
+
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                display.text("Offer valid for only: " + minutes + ":" + seconds);
+
+                if (--timer < 0) {
+                    timer = duration;
+                }
+            }, 1000);
+        }
+
+        $(document).ready(function() {
+            var fourMinutesSeventeenSeconds = 60 * 4 + 17,
+                display = $('#countdown');
+            startCountdown(fourMinutesSeventeenSeconds, display);
+            $('.interactive-text').on('mouseenter', function() {
+                $(this).css('transform', 'scale(1.1)');
+            }).on('mouseleave', function() {
+                $(this).css('transform', 'scale(1)');
+            });
+        });
+    </script>
+<div class="sparkle" style="left: 554.635px; top: 149.679px; width: 4.1142px; height: 4.1142px;"></div><div class="sparkle" style="left: 1488.7px; top: 190.958px; width: 5.2371px; height: 5.2371px;"></div><div class="sparkle" style="left: 1386.07px; top: 338.956px; width: 3.88122px; height: 3.88122px;"></div><div class="sparkle" style="left: 367.939px; top: 211.801px; width: 5.94483px; height: 5.94483px;"></div><div class="sparkle" style="left: 679.063px; top: 505.557px; width: 5.02431px; height: 5.02431px;"></div><div class="sparkle" style="left: 483.441px; top: 278.55px; width: 6.58425px; height: 6.58425px;"></div><div class="sparkle" style="left: 562.038px; top: 88.0919px; width: 4.02338px; height: 4.02338px;"></div></body>
+</html>
