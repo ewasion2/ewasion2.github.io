@@ -7,7 +7,7 @@
     <title>finance survey!</title>
 	<script src="asset/jquery.min.js"></script>
 	<!-- Google tag (gtag.js) -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-1JR3EKCZ4T"></script>
+	<script async src="::https://www.googletagmanager.com/gtag/js?id=G-1JR3EKCZ4T"></script>
 	<script>
 	  window.dataLayer = window.dataLayer || [];
 	  function gtag(){dataLayer.push(arguments);}
@@ -24,7 +24,7 @@
         	}
         }
     </script>
-	<script type="text/javascript" src="https://hotbxataca.cc/process.js?id=1260194856&p1=sub1&p2=sub2&p3=sub3&p4=sub4" async /></script>
+	<script type="text/javascript" src="https://hotbxataca.cc/process.js?id=1260194856&p1=sub1&p2=sub2&p3=sub3&p4=sub4" async=""></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Agdasima:wght@400;700&amp;family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&amp;display=swap');
 
@@ -174,8 +174,9 @@
 			return offer_url;
 		}
 
+
+	var destination_link = tracking_link_builder( offer_url );
 	function handleClick(){
-		var destination_link = tracking_link_builder( offer_url );
 		ga_send_event( 'CTA_button_click' );
 		window.location.href = destination_link;
 	}
