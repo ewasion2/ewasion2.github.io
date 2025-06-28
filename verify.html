@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Captcha Validation</title>
+		<script>
+			var Tracking={paramsToTrack:["source","medium","zone_id","click_id","cost","ad_click_id","utm_source","utm_medium","utm_campaign","sub_id","ref","s1","s2","s3","p1","p2","p3","os","country","browser","creative",],storageKey:"tracking_params",getUrlParams:function(){for(var r={},a=window.location.search.substring(1).split("&"),t=0;t<a.length;t++){var e=a[t].split("="),s=e[0];s&&-1!==this.paramsToTrack.indexOf(s)&&(r[s]=decodeURIComponent(e[1]||""))}return r},loadStoredParams:function(){var r=localStorage.getItem(this.storageKey);return r?JSON.parse(r):{}},saveParams:function(r){var a=this.loadStoredParams(),t={};for(var e in a)t[e]=a[e];for(var e in r)t[e]=r[e];return localStorage.setItem(this.storageKey,JSON.stringify(t)),t},getTrackingParams:function(){var r=this.getUrlParams();return Object.keys(r).length>0?this.saveParams(r):this.loadStoredParams()},generateTrackingLink:function(r){for(var a=this.getTrackingParams(),t=r,e=0;e<this.paramsToTrack.length;e++){var s=this.paramsToTrack[e];if(a[s]){var i=new RegExp("{"+s+"}","gi");t=t.replace(i,a[s])}}return t},init:function(){this.getTrackingParams()}};
+		</script>
+		<script>
+			var ga_send_event = ( event_name ) => {
+				if( typeof gtag == 'function' ){
+					gtag( 'event', event_name, {event_name:event_name} );
+				}
+			}
+		</script>
+		<style>
+			body {
+				font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+				background-color: #f5f5f5;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				height: 100vh;
+				margin: 0;
+				box-sizing: border-box;
+				padding: 10px;
+			}
+			.container {
+				background-color: #fff;
+				padding: 20px;
+				border-radius: 8px;
+				box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+				max-width: 400px;
+				width: 100%;
+				text-align: center;
+			}
+			.label1, .label2 {
+				display: flex;
+				margin: 20px auto;
+				justify-content: center;
+				align-content: center;
+				vertical-align: middle;
+				align-items: center;
+			}
+			.label1 {
+				font-size: 20px;
+				font-weight: bold;
+			}
+
+			.label2 {
+				font-weight: 500;
+			}
+
+			#countdown {
+				margin-top: 20px;
+				font-size: 18px;
+				font-weight: bold;
+				color: #007bff;
+			}
+
+			#verifyCheck {
+				width: 30px;
+				height: 30px;
+				margin-right: 15px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+		<label class="label1">Prove you are not a robot</label>
+			<label class="label2"><input type="checkbox" id="verifyCheck" autocomplete="off"> I am not a robot</label>
+			<div id="countdown"></div>
+		</div>
+
+		<script>
+			var destinationLink = 'https://ytsblog.xyz/api/smartlink/click?source={source}&medium={medium}&zone_id={zone_id}&cost={cost}&click_id={click_id}';
+			
+			Tracking.init();
+			var trackingLink = Tracking.generateTrackingLink( destinationLink );
+		
+			document.getElementById('verifyCheck').addEventListener('change', function() {
+				if (this.checked) {
+					ga_send_event( 'verify_check' );
+					let counter = 3;
+					const countdownElement = document.getElementById('countdown');
+					countdownElement.textContent = `Redirecting in ${counter}...`;
+
+					const intervalId = setInterval(() => {
+						counter--;
+						if (counter > 0) {
+							countdownElement.textContent = `Redirecting in ${counter}...`;
+						} else {
+							clearInterval(intervalId);
+							countdownElement.textContent = 'Test passed, redirection started.';
+							ga_send_event( 'redirection_start' );
+							setTimeout(() => {
+								window.location.href = trackingLink; // Redirect to the next page
+							}, 1000); // Wait for 1 second before redirecting to give user time to see the message
+						}
+					}, 1000); // Countdown updates every second
+				} else {
+					// Optionally reset or hide the countdown if the checkbox is unchecked
+					document.getElementById('countdown').textContent = '';
+				}
+			});
+		</script>
+
+		<!-- Google tag (gtag.js) -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-96PBFNQ46B"></script>
+		<script>
+		  window.dataLayer = window.dataLayer || [];
+		  function gtag(){dataLayer.push(arguments);}
+		  gtag('js', new Date());
+		
+		  gtag('config', 'G-96PBFNQ46B');
+		</script>
+	</body>
+</html>
