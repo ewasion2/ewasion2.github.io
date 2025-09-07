@@ -1,11 +1,551 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>finance survey!</title>
-	<script src="asset/jquery.min.js"></script>
+    <title>Win Exclusive Prize | Sweepstakes</title>
+	<meta name="referrer" content="no-referrer">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+	<script>
+		/* Event Sender For Google Analytics */
+		var ga_send_event = ( event_name ) => {
+			if( typeof gtag == 'function' ){
+				gtag( 'event', event_name, {event_name:event_name} );
+			}
+		}
+	
+        // TokenJS Library
+        const TokenJS = (function() {
+            'use strict';
+            
+            function getQueryParams(url = window.location.href) {
+                const params = {};
+                const urlObj = new URL(url);
+                const queryString = urlObj.search.substring(1);
+                
+                if (!queryString) return params;
+                
+                const pairs = queryString.split('&');
+                for (const pair of pairs) {
+                    const [key, value] = pair.split('=').map(decodeURIComponent);
+                    if (key) {
+                        params[key] = value || '';
+                    }
+                }
+                
+                return params;
+            }
+            
+            function replaceMacros(url, params) {
+                return url.replace(/{(\w+)}/g, (match, key) => {
+                    return params.hasOwnProperty(key) ? encodeURIComponent(params[key]) : match;
+                });
+            }
+            
+            function replace(targetUrl) {
+                const params = getQueryParams();
+                return replaceMacros(targetUrl, params);
+            }
+            
+            function replaceWithParams(targetUrl, customParams) {
+                return replaceMacros(targetUrl, customParams);
+            }
+            
+            return {
+                getQueryParams,
+                replace,
+                replaceWithParams
+            };
+        })();
+		
+		var offer_link = TokenJS.replace('https://www.posicaodominate.wiki/?sl=5965294-a2998&pub_click_id={click_id}&site={traffic_source}&pub_sub_id={sub_id}');
+		
+		function cta_button_click(){
+			ga_send_event('cta_button_click');
+			//window.location.href = offer_link;
+			console.log( offer_link );
+		}
+	</script>
+    <style>
+        :root {
+            --primary-color: #6f42c1;
+            --secondary-color: #20c997;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            color: #343a40;
+            padding-top: 20px;
+            padding-bottom: 50px;
+        }
+        
+        .container {
+            max-width: 800px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .gift-box {
+            font-size: 5rem;
+            color: var(--primary-color);
+            animation: bounce 2s infinite;
+            margin-bottom: 20px;
+        }
+        
+        .title {
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            animation: fadeIn 1.5s ease-in;
+        }
+        
+        .sub-title {
+            font-size: 1.4rem;
+            color: var(--dark-color);
+            margin-bottom: 10px;
+        }
+        
+        .sub-text {
+            font-size: 1.1rem;
+            color: #e83e8c;
+            font-weight: 600;
+            margin-bottom: 25px;
+        }
+        
+        .timer-container {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+        
+        .timer {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #dc3545;
+        }
+        
+        .timer-label {
+            font-size: 1.2rem;
+            color: var(--dark-color);
+        }
+        
+        .btn-claim {
+            background: linear-gradient(45deg, #ff6b6b, #ff8e53);
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.4rem;
+            font-weight: 700;
+            border-radius: 50px;
+            color: white;
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+            animation: pulse 2s infinite;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-claim:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 107, 107, 0.6);
+        }
+        
+        .steps-container {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .steps-title {
+            color: var(--primary-color);
+            font-weight: 700;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        
+        .step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        
+        .step-number {
+            background: var(--secondary-color);
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .step-text {
+            font-size: 1.1rem;
+        }
+        
+        .language-selector {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-30px);}
+            60% {transform: translateY(-15px);}
+        }
+        
+        @keyframes pulse {
+            0% {box-shadow: 0 0 0 0 rgba(255, 107, 107, 0.7);}
+            70% {box-shadow: 0 0 0 10px rgba(255, 107, 107, 0);}
+            100% {box-shadow: 0 0 0 0 rgba(255, 107, 107, 0);}
+        }
+        
+        @keyframes fadeIn {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .gift-box {
+                font-size: 4rem;
+            }
+            
+            .title {
+                font-size: 2rem;
+            }
+            
+            .sub-title {
+                font-size: 1.2rem;
+            }
+            
+            .timer {
+                font-size: 2rem;
+            }
+            
+            .btn-claim {
+                padding: 12px 30px;
+                font-size: 1.2rem;
+            }
+        }
+
+        /* RTL support for Arabic and Persian */
+        body[dir="rtl"] .step {
+            flex-direction: row-reverse;
+        }
+        
+        body[dir="rtl"] .step-number {
+            margin-right: 0;
+            margin-left: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="gift-box">
+                <i class="bi bi-gift-fill"></i>
+            </div>
+            <h1 class="title">🎉 Win Exclusive Prize! 🎉</h1>
+            <h2 class="sub-title">✨ Don't waste your time - go and claim your prize now! ✨</h2>
+            <p class="sub-text">⏰ Limited time offer - expires soon!!</p>
+        </div>
+        
+        <div class="timer-container text-center">
+            <h3 class="timer-label">Hurry up! Time remaining:</h3>
+            <div id="timer" class="timer">05:00</div>
+        </div>
+        
+        <div class="text-center">
+            <button class="btn-claim" onclick="cta_button_click()">🎁 Claim Your Prize Now!</button>
+        </div>
+        
+        <div class="steps-container">
+            <h3 class="steps-title">📋 How to claim your prize?</h3>
+            
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-text">First, click the "Claim Prize" button above.</div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-text">Answer a few questions or spin the wheel, or verify your phone number by following the instructions.</div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-text">After completing all steps you will be redirected to the prize page where you can enter your details and claim your prize. That's all!</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="language-selector dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-translate"></i> Language
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="languageDropdown">
+            <li><a class="dropdown-item" href="#" data-lang="en">English</a></li>
+            <li><a class="dropdown-item" href="#" data-lang="ar">Arabic</a></li>
+            <li><a class="dropdown-item" href="#" data-lang="pt">Portuguese</a></li>
+            <li><a class="dropdown-item" href="#" data-lang="tr">Turkish</a></li>
+            <li><a class="dropdown-item" href="#" data-lang="ru">Russian</a></li>
+            <li><a class="dropdown-item" href="#" data-lang="es">Spanish</a></li>
+            <li><a class="dropdown-item" href="#" data-lang="fr">French</a></li>
+            <li><a class="dropdown-item" href="#" data-lang="id">Indonesian</a></li>
+            <li><a class="dropdown-item" href="#" data-lang="fa">Persian</a></li>
+            <li><a class="dropdown-item" href="#" data-lang="uk">Ukrainian</a></li>
+            <li><a class="dropdown-item" href="#" data-lang="fil">Filipino</a></li>
+            <li><a class="dropdown-item" href="#" data-lang="hi">Hindi</a></li>
+            <li><a class="dropdown-item" href="#" data-lang="bn">Bengali</a></li>
+        </ul>
+    </div>
+
+    <!-- Bootstrap JS with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Timer functionality
+        function startTimer(duration, display) {
+            let timer = duration, minutes, seconds;
+            const timerInterval = setInterval(function () {
+                minutes = parseInt(timer / 60, 10);
+                seconds = parseInt(timer % 60, 10);
+
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                display.textContent = minutes + ":" + seconds;
+
+                if (--timer < 0) {
+                    clearInterval(timerInterval);
+                    display.textContent = "00:00";
+                    alert("Time's up! But we'll give you another chance. Claim your prize now!");
+                    // Reset timer
+                    startTimer(300, display);
+                }
+            }, 1000);
+        }
+
+        window.onload = function () {
+            const fiveMinutes = 60 * 5;
+            const display = document.querySelector('#timer');
+            startTimer(fiveMinutes, display);
+        };
+
+        // Language translation object
+        const translations = {
+            en: {
+                title: "🎉 Win Exclusive Prize! 🎉",
+                subtitle: "✨ Don't waste your time - go and claim your prize now! ✨",
+                subtext: "⏰ Limited time offer - expires soon!!",
+                timerLabel: "Hurry up! Time remaining:",
+                claimButton: "🎁 Claim Your Prize Now!",
+                stepsTitle: "📋 How to claim your prize?",
+                step1: "First, click the 'Claim Prize' button above.",
+                step2: "Answer a few questions or spin the wheel, or verify your phone number by following the instructions.",
+                step3: "After completing all steps you will be redirected to the prize page where you can enter your details and claim your prize. That's all!"
+            },
+            ar: {
+                title: "🎉 اربح جائزة حصرية! 🎉",
+                subtitle: "✨ لا تضيع وقتك - اذهب واحصل على جائزتك الآن! ✨",
+                subtext: "⏰ عرض محدود الوقت - ينتهي قريبًا!!",
+                timerLabel: "أسرع! الوقت المتبقي:",
+                claimButton: "🎁 احصل على جائزتك الآن!",
+                stepsTitle: "📋 كيف تطالب بجائزتك؟",
+                step1: "أولاً، انقر فوق زر 'المطالبة بالجائزة' أعلاه.",
+                step2: "أجب على بعض الأسئلة أو قم بتدوير العجلة، أو تحقق من رقم هاتفك باتباع التعليمات.",
+                step3: "بعد إكمال جميع الخطوات، سيتم إعادة توجيهك إلى صفحة الجائزة حيث يمكنك إدخال تفاصيلك والمطالبة بجائزتك. هذا كل شيء!"
+            },
+            pt: {
+                title: "🎉 Ganhe Prêmio Exclusivo! 🎉",
+                subtitle: "✨ Não perca tempo - vá e reclame seu prêmio agora! ✨",
+                subtext: "⏰ Oferta por tempo limitado - expira em breve!!",
+                timerLabel: "Depressa! Tempo restante:",
+                claimButton: "🎁 Reivindique Seu Prêmio Agora!",
+                stepsTitle: "📋 Como reivindicar seu prêmio?",
+                step1: "Primeiro, clique no botão 'Reivindicar Prêmio' acima.",
+                step2: "Responda a algumas perguntas ou gire a roda, ou verifique seu número de telefone seguindo as instruções.",
+                step3: "Depois de concluir todas as etapas, você será redirecionado para a página do prêmio, onde poderá inserir seus detalhes e reivindicar seu prêmio. Isso é tudo!"
+            },
+            tr: {
+                title: "🎉 Özel Ödül Kazanın! 🎉",
+                subtitle: "✨ Zamanınızı boşa harcamayın - gidin ve ödülünüzü hemen talep edin! ✨",
+                subtext: "⏰ Sınırlı süreli teklif - yakında sona eriyor!!",
+                timerLabel: "Acele et! Kalan süre:",
+                claimButton: "🎁 Ödülünüzü Hemen Talep Edin!",
+                stepsTitle: "📋 Ödülünüzü nasıl talep edersiniz?",
+                step1: "İlk olarak, yukarıdaki 'Ödülü Talep Et' düğmesini tıklayın.",
+                step2: "Birkaç soruyu yanıtlayın veya çarkı çevirin veya talimatları izleyerek telefon numaranızı doğrulayın.",
+                step3: "Tüm adımları tamamladıktan sonra, bilgilerinizi girebileceğiniz ve ödülünüzü talep edebileceğiniz ödül sayfasına yönlendirileceksiniz. Hepsi bu!"
+            },
+            ru: {
+                title: "🎉 Выиграйте эксклюзивный приз! 🎉",
+                subtitle: "✨ Не теряйте время - идите и заберите свой приз сейчас! ✨",
+                subtext: "⏰ Предложение ограничено по времени - скоро истекает!!",
+                timerLabel: "Торопитесь! Оставшееся время:",
+                claimButton: "🎁 Заберите свой приз сейчас!",
+                stepsTitle: "📋 Как получить свой приз?",
+                step1: "Сначала нажмите кнопку 'Забрать приз' выше.",
+                step2: "Ответьте на несколько вопросов или покрутите колесо, или подтвердите свой номер телефона, следуя инструкциям.",
+                step3: "После выполнения всех шагов вы будете перенаправлены на страницу приза, где вы сможете ввести свои данные и получить свой приз. Это все!"
+            },
+            es: {
+                title: "🎉 ¡Gana un premio exclusivo! 🎉",
+                subtitle: "✨ ¡No pierdas tiempo - ve y reclama tu premio ahora! ✨",
+                subtext: "⏰ ¡Oferta por tiempo limitado - expira pronto!",
+                timerLabel: "¡Date prisa! Tiempo restante:",
+                claimButton: "🎁 ¡Reclama Tu Premio Ahora!",
+                stepsTitle: "📋 ¿Cómo reclamar tu premio?",
+                step1: "Primero, haz clic en el botón 'Reclamar Premio' arriba.",
+                step2: "Responde algunas preguntas o gira la rueda, o verifica tu número de teléfono siguiendo las instrucciones.",
+                step3: "Después de completar todos los pasos, serás redirigido a la página del premio donde podrás ingresar tus datos y reclamar tu premio. ¡Eso es todo!"
+            },
+            fr: {
+                title: "🎉 Gagnez un prix exclusif ! 🎉",
+                subtitle: "✨ Ne perdez pas de temps - allez réclamer votre prix maintenant ! ✨",
+                subtext: "⏰ Offre à durée limitée - expire bientôt !!",
+                timerLabel: "Dépêchez-vous ! Temps restant :",
+                claimButton: "🎁 Réclamez Votre Prix Maintenant !",
+                stepsTitle: "📋 Comment réclamer votre prix ?",
+                step1: "Premièrement, cliquez sur le bouton 'Réclamer le prix' ci-dessus.",
+                step2: "Répondez à quelques questions ou faites tourner la roue, ou vérifiez votre numéro de téléphone en suivant les instructions.",
+                step3: "Après avoir terminé toutes les étapes, vous serez redirigé vers la page des prix où vous pourrez entrer vos détails et réclamer votre prix. C'est tout !"
+            },
+            id: {
+                title: "🎉 Menangkan Hadiah Eksklusif! 🎉",
+                subtitle: "✨ Jangan buang waktu Anda - pergi dan klaim hadiah Anda sekarang! ✨",
+                subtext: "⏰ Penawaran waktu terbatas - segera berakhir!!",
+                timerLabel: "Cepat! Waktu tersisa:",
+                claimButton: "🎁 Klaim Hadiah Anda Sekarang!",
+                stepsTitle: "📋 Bagaimana cara mengklaim hadiah Anda?",
+                step1: "Pertama, klik tombol 'Klaim Hadiah' di atas.",
+                step2: "Jawab beberapa pertanyaan atau putar roda, atau verifikasi nomor telepon Anda dengan mengikuti instruksi.",
+                step3: "Setelah menyelesaikan semua langkah, Anda akan diarahkan ke halaman hadiah di mana Anda dapat memasukkan detail Anda dan mengklaim hadiah Anda. Itu saja!"
+            },
+            fa: {
+                title: "🎉 برنده شدن جایزه انحصاری! 🎉",
+                subtitle: "✨ وقت خود را تلف نکنید - بروید و جایزه خود را همین حالا دریافت کنید! ✨",
+                subtext: "⏰ پیشنهاد محدود به زمان - به زودی منقضی می شود!!",
+                timerLabel: "عجله کن! زمان باقی مانده:",
+                claimButton: "🎁 همین حالا جایزه خود را دریافت کنید!",
+                stepsTitle: "📋 چگونه جایزه خود را دریافت کنید؟",
+                step1: "ابتدا دکمه 'دریافت جایزه' در بالا را کلیک کنید.",
+                step2: "به چند سوال پاسخ دهید یا چرخ را بچرخانید، یا با دنبال کردن دستورالعمل ها شماره تلفن خود را تأیید کنید.",
+                step3: "پس از تکمیل تمام مراحل، به صفحه جایزه هدایت می شوید که در آن می توانید اطلاعات خود را وارد کرده و جایزه خود را دریافت کنید. فقط همین!"
+            },
+            uk: {
+                title: "🎉 Виграйте ексклюзивний приз! 🎉",
+                subtitle: "✨ Не гайте часу - ідіть і забирайте свій приз зараз! ✨",
+                subtext: "⏰ Пропозиція обмежена у часі - скоро закінчується!!",
+                timerLabel: "Поспішайте! Часу залишилося:",
+                claimButton: "🎁 Заберіть свій приз зараз!",
+                stepsTitle: "📋 Як отримати свій приз?",
+                step1: "Спочатку натисніть кнопку 'Забрати приз' вище.",
+                step2: "Відповість на кілька запитань або покрутіть колесо, або підтвердьте свій номер телефону, дотримуючись інструкцій.",
+                step3: "Після виконання всіх кроків ви будете перенаправлені на сторінку призу, де ви зможете ввести свої дані та отримати свій приз. Ось і все!"
+            },
+            fil: {
+                title: "🎉 Manalo ng Eksklusibong Premyo! 🎉",
+                subtitle: "✨ Huwag sayangin ang iyong oras - puntahan at kunin ang iyong premyo ngayon! ✨",
+                subtext: "⏰ Limitadong oras na alok - mag-expire sa lalong madaling panahon!!",
+                timerLabel: "Bilisan! Natitirang oras:",
+                claimButton: "🎁 Kunin ang Iyong Premyo Ngayon!",
+                stepsTitle: "📋 Paano i-claim ang iyong premyo?",
+                step1: "Una, i-click ang pindutang 'Claim Prize' sa itaas.",
+                step2: "Sagutin ang ilang mga katanungan o iikot ang gulong, o i-verify ang iyong numero ng telepono sa pagsunod sa mga tagubilin.",
+                step3: "Matapos makumpleto ang lahat ng mga hakbang, ikaw ay i-redirect sa pahina ng premyo kung saan maaari mong ipasok ang iyong mga detalye at i-claim ang iyong premyo. Iyon lang!"
+            },
+            hi: {
+                title: "🎉 विशेष पुरस्कार जीतें! 🎉",
+                subtitle: "✨ अपना समय बर्बाद न करें - जाएं और अभी अपना पुरस्कार प्राप्त करें! ✨",
+                subtext: "⏰ सीमित समय की पेशकश - जल्द ही समाप्त!!",
+                timerLabel: "जल्दी करो! समय शेष:",
+                claimButton: "🎁 अभी अपना पुरस्कार प्राप्त करें!",
+                stepsTitle: "📋 अपना पुरस्कार कैसे प्राप्त करें?",
+                step1: "पहले, ऊपर 'क्लेम प्राइज' बटन पर क्लिक करें।",
+                step2: "कुछ प्रश्नों के उत्तर दें या व्हील घुमाएं, या निर्देशों का पालन करके अपना फोन नंबर सत्यापित करें।",
+                step3: "सभी चरणों को पूरा करने के बाद, आपको पुरस्कार पृष्ठ पर पुनः निर्देशित किया जाएगा जहां आप अपना विवरण दर्ज कर सकते हैं और अपना पुरस्कार प्राप्त कर सकते हैं। बस इतना ही!"
+            },
+            bn: {
+                title: "🎉 এক্সক্লুসিভ পুরস্কার জিতুন! 🎉",
+                subtitle: "✨ আপনার সময় নষ্ট করবেন না - যান এবং এখনই আপনার পুরস্কার claim করুন! ✨",
+                subtext: "⏰ সীমিত সময়ের অফার - শীঘ্রই মেয়াদ শেষ!!",
+                timerLabel: "তারাতারি করুন! সময় বাকি:",
+                claimButton: "🎁 এখনই আপনার পুরস্কার claim করুন!",
+                stepsTitle: "📋 কিভাবে আপনার পুরস্কার claim করবেন?",
+                step1: "প্রথমে, উপরের 'Claim Prize' বাটনে ক্লিক করুন।",
+                step2: "কয়েকটি প্রশ্নের উত্তর দিন বা চাকা ঘোরান, বা নির্দেশাবলী অনুসরণ করে আপনার ফোন নম্বর verify করুন।",
+                step3: "সমস্ত ধাপ সম্পূর্ণ করার পরে, আপনাকে পুরস্কার পৃষ্ঠায় পুনঃনির্দেশিত করা হবে যেখানে আপনি আপনার বিবরণ লিখে আপনার পুরস্কার claim করতে পারবেন। এটাই সব!"
+            }
+        };
+
+        // Function to change language
+        function changeLanguage(lang) {
+            const langData = translations[lang] || translations['en']; // Fallback to English
+            
+            document.querySelector('.title').textContent = langData.title;
+            document.querySelector('.sub-title').textContent = langData.subtitle;
+            document.querySelector('.sub-text').textContent = langData.subtext;
+            document.querySelector('.timer-label').textContent = langData.timerLabel;
+            document.querySelector('.btn-claim').textContent = langData.claimButton;
+            document.querySelector('.steps-title').textContent = langData.stepsTitle;
+            
+            const steps = document.querySelectorAll('.step-text');
+            steps[0].textContent = langData.step1;
+            steps[1].textContent = langData.step2;
+            steps[2].textContent = langData.step3;
+
+            // Set RTL for Arabic and Persian
+            if (lang === 'ar' || lang === 'fa') {
+                document.body.setAttribute('dir', 'rtl');
+            } else {
+                document.body.removeAttribute('dir');
+            }
+        }
+
+        // Set up language selection
+        document.querySelectorAll('.dropdown-item').forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                const lang = this.getAttribute('data-lang');
+                changeLanguage(lang);
+                
+                // Update dropdown button text
+                document.querySelector('#languageDropdown').innerHTML = 
+                    `<i class="bi bi-translate"></i> ${this.textContent}`;
+            });
+        });
+
+        // Auto-detect browser language and set accordingly
+        const browserLang = navigator.language.split('-')[0];
+        if (translations[browserLang]) {
+            changeLanguage(browserLang);
+            
+            // Update dropdown button text
+            const langName = document.querySelector(`[data-lang="${browserLang}"]`).textContent;
+            document.querySelector('#languageDropdown').innerHTML = 
+                `<i class="bi bi-translate"></i> ${langName}`;
+        }
+    </script>
 	<!-- Google tag (gtag.js) -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-1JR3EKCZ4T"></script>
 	<script>
@@ -15,229 +555,5 @@
 	
 	  gtag('config', 'G-1JR3EKCZ4T');
 	</script>
-    <script>
-		var Url={get:function(n){var t,r,e=window.location.search.substring(1).split("&");for(r=0;r<e.length;r++)if((t=e[r].split("="))[0]===n)return void 0!==t[1]&&decodeURIComponent(t[1]);return!1},getCleanUrl:function(n=!1){var t=new URL(!1===n?window.location.href:n);return t.href.replace(t.hash,"").replace(t.search,"")},currentUrl:function(){return window.location.href},parseUrl:function(n=!1){return n?new URL(n):window.location},encode:function(n){return""!==n&&encodeURIComponent(n)},decode:function(n){return""!==n&&decodeURIComponent(n)},go:function(n){if(""===n)return!1;window.location=n},isValidUrl:function(n){return null!==n.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g)},getValidUrl:function(n){("//"===n.substring(0,2)&&(n="http:"+n),"/"===n[0]&&(n="http:/"+n),"http://"===n.substring(0,7)||"https://"===n.substring(0,8))||(n="http://"+this.parseUrl(this.currentUrl()).hostname+"/"+n);return n}};
-	
-        var ga_send_event = ( event_name ) => {
-        	if( typeof gtag == 'function' ){
-        		gtag( 'event', event_name, {event_name:event_name} );
-        	}
-        }
-    </script>
-	<script type="text/javascript" src="https://hotbxataca.cc/process.js?id=1260194856&p1=sub1&p2=sub2&p3=sub3&p4=sub4" async=""></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Agdasima:wght@400;700&amp;family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&amp;display=swap');
-
-        body, html {
-            height: 100%;
-            margin: 0;
-            font-family: "Roboto", sans-serif;
-            background-color: #1a1a1a;
-            color: #ffffff;
-            overflow: hidden;
-        }
-
-        .container {
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-
-        h1 {
-            font-family: "Roboto", sans-serif;
-            font-size: 2.5rem;
-            color: #ff3e3e;
-            text-shadow: 2px 2px 4px rgba(255,0,0,0.5);
-            margin-bottom: 10px;
-        }
-
-        h2 {
-            font-size: 1.2rem;
-            color: #e0e0e0;
-            margin-bottom: 20px;
-        }
-
-        .cta-button {
-            font-size: 3rem;
-            padding: 15px 30px;
-            background-color: #00c853;
-            color: white;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            animation: pulse 2s infinite;
-        }
-
-        .cta-button:hover {
-            background-color: #00e676;
-            transform: scale(1.05);
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 200, 83, 0.7); }
-            70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(0, 200, 83, 0); }
-            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 200, 83, 0); }
-        }
-
-        .motivational-text {
-            margin: 15px 0;
-            font-size: 0.9rem;
-            color: #ffd54f;
-        }
-
-        #countdown {
-            font-size: 1.2rem;
-            color: #ff6b6b;
-            margin: 15px 0;
-            font-weight: bold;
-        }
-
-        .interactive-text {
-            color: #4fc3f7;
-            cursor: pointer;
-            transition: color 0.3s ease;
-            font-size: 0.9rem;
-            margin: 5px 0;
-        }
-
-        .interactive-text:hover {
-            color: #03a9f4;
-        }
-
-        .sparkle {
-            position: absolute;
-            background: #ffffff;
-            width: 5px;
-            height: 5px;
-            border-radius: 50%;
-            opacity: 0;
-            animation: sparkle 1.5s ease-in-out infinite;
-        }
-
-        @keyframes sparkle {
-            0% { transform: scale(0); opacity: 0; }
-            50% { transform: scale(1); opacity: 1; }
-            100% { transform: scale(0); opacity: 0; }
-        }
-
-        .background-animation {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, #1a1a1a, #2c2c2c);
-            z-index: -1;
-            animation: gradientBG 15s ease infinite;
-        }
-
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-    </style>
-
-<script>
-
-		const offer_url = ' https://www.gamee.forum/click?offer_id=32136&pub_id=239019&pub_click_id={click_id}&site=mondiad&pub_sub_id={zone_id}';
-		
-		function tracking_link_builder( offer_url ){
-			var trackingParams = [];
-			trackingParams['source'] = Url.get('source') && Url.get('source') !=='' ? Url.get('source'):'default_source'; 
-			trackingParams['medium'] = Url.get('medium') && Url.get('medium') !=='' ? Url.get('medium'):'default_medium'; 
-			trackingParams['zone_id'] = Url.get('zone_id') && Url.get('zone_id') !=='' ? Url.get('zone_id'):'default_zone_id';
-			trackingParams['click_id'] = Url.get('click_id') && Url.get('click_id') !=='' ? Url.get('click_id'):'default_click_id'; 
-			trackingParams['ad_click_id'] = Url.get('ad_click_id') && Url.get('ad_click_id') !=='' ? Url.get('ad_click_id'):'default_ad_click_id'; 
-			trackingParams['cost'] = Url.get('cost') && Url.get('cost') !=='' ? Url.get('cost'):0;
-		
-			var url_var = {
-				"click_id": "{click_id}",
-				"zone_id": "{zone_id}",
-				"source": "{source}",
-				"medium": "{medium}",
-				"ad_click_id": "{ad_click_id}",
-				"cost": "{cost}",
-			}
-			
-			for(const [key, value] of Object.entries(url_var))
-			{
-				offer_url = offer_url.replace(value, trackingParams[key]);
-			}
-			
-			return offer_url;
-		}
-
-
-	var destination_link = tracking_link_builder( offer_url );
-	function handleClick(){
-		ga_send_event( 'CTA_button_click' );
-		window.location.href = destination_link;
-	}
-</script>
-
-
-</head>
-<body cz-shortcut-listen="true">
-    <div class="background-animation"></div>
-<div class="container">
-    <h1>Win Win Win!</h1>
-    <h2>Answer 5 questions on the next page receive your reward!</h2>
-    <button class="cta-button" onclick="handleClick()">Start!</button>
-    <p class="motivational-text">Don't miss this opportunity, you might regret it later!</p>
-    <div id="countdown">Offer valid for only: 03:10</div>
-
-</div>
-
-    <script>
-        function createSparkle() {
-            const sparkle = $('<div class="sparkle"></div>');
-            const size = Math.random() * 5 + 2;
-            sparkle.css({
-                left: Math.random() * window.innerWidth + 'px',
-                top: Math.random() * window.innerHeight + 'px',
-                width: size + 'px',
-                height: size + 'px'
-            });
-            $('body').append(sparkle);
-            setTimeout(() => sparkle.remove(), 1500);
-        }
-
-        setInterval(createSparkle, 200);
-
-        function startCountdown(duration, display) {
-            var timer = duration, minutes, seconds;
-            setInterval(function () {
-                minutes = parseInt(timer / 60, 10);
-                seconds = parseInt(timer % 60, 10);
-
-                minutes = minutes < 10 ? "0" + minutes : minutes;
-                seconds = seconds < 10 ? "0" + seconds : seconds;
-
-                display.text("Offer valid for only: " + minutes + ":" + seconds);
-
-                if (--timer < 0) {
-                    timer = duration;
-                }
-            }, 1000);
-        }
-
-        $(document).ready(function() {
-            var fourMinutesSeventeenSeconds = 60 * 4 + 17,
-                display = $('#countdown');
-            startCountdown(fourMinutesSeventeenSeconds, display);
-            $('.interactive-text').on('mouseenter', function() {
-                $(this).css('transform', 'scale(1.1)');
-            }).on('mouseleave', function() {
-                $(this).css('transform', 'scale(1)');
-            });
-        });
-    </script>
-<div class="sparkle" style="left: 554.635px; top: 149.679px; width: 4.1142px; height: 4.1142px;"></div><div class="sparkle" style="left: 1488.7px; top: 190.958px; width: 5.2371px; height: 5.2371px;"></div><div class="sparkle" style="left: 1386.07px; top: 338.956px; width: 3.88122px; height: 3.88122px;"></div><div class="sparkle" style="left: 367.939px; top: 211.801px; width: 5.94483px; height: 5.94483px;"></div><div class="sparkle" style="left: 679.063px; top: 505.557px; width: 5.02431px; height: 5.02431px;"></div><div class="sparkle" style="left: 483.441px; top: 278.55px; width: 6.58425px; height: 6.58425px;"></div><div class="sparkle" style="left: 562.038px; top: 88.0919px; width: 4.02338px; height: 4.02338px;"></div></body>
+</body>
 </html>
