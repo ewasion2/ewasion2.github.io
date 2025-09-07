@@ -5,7 +5,49 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Captcha Validation</title>
 		<script>
-			var Tracking={paramsToTrack:["source","medium","zone_id","click_id","cost","ad_click_id","utm_source","utm_medium","utm_campaign","sub_id","ref","s1","s2","s3","p1","p2","p3","os","country","browser","creative",],storageKey:"tracking_params",getUrlParams:function(){for(var r={},a=window.location.search.substring(1).split("&"),t=0;t<a.length;t++){var e=a[t].split("="),s=e[0];s&&-1!==this.paramsToTrack.indexOf(s)&&(r[s]=decodeURIComponent(e[1]||""))}return r},loadStoredParams:function(){var r=localStorage.getItem(this.storageKey);return r?JSON.parse(r):{}},saveParams:function(r){var a=this.loadStoredParams(),t={};for(var e in a)t[e]=a[e];for(var e in r)t[e]=r[e];return localStorage.setItem(this.storageKey,JSON.stringify(t)),t},getTrackingParams:function(){var r=this.getUrlParams();return Object.keys(r).length>0?this.saveParams(r):this.loadStoredParams()},generateTrackingLink:function(r){for(var a=this.getTrackingParams(),t=r,e=0;e<this.paramsToTrack.length;e++){var s=this.paramsToTrack[e];if(a[s]){var i=new RegExp("{"+s+"}","gi");t=t.replace(i,a[s])}}return t},init:function(){this.getTrackingParams()}};
+			// TokenJS Library
+			const TokenJS = (function() {
+				'use strict';
+				
+				function getQueryParams(url = window.location.href) {
+					const params = {};
+					const urlObj = new URL(url);
+					const queryString = urlObj.search.substring(1);
+					
+					if (!queryString) return params;
+					
+					const pairs = queryString.split('&');
+					for (const pair of pairs) {
+						const [key, value] = pair.split('=').map(decodeURIComponent);
+						if (key) {
+							params[key] = value || '';
+						}
+					}
+					
+					return params;
+				}
+				
+				function replaceMacros(url, params) {
+					return url.replace(/{(\w+)}/g, (match, key) => {
+						return params.hasOwnProperty(key) ? encodeURIComponent(params[key]) : match;
+					});
+				}
+				
+				function replace(targetUrl) {
+					const params = getQueryParams();
+					return replaceMacros(targetUrl, params);
+				}
+				
+				function replaceWithParams(targetUrl, customParams) {
+					return replaceMacros(targetUrl, customParams);
+				}
+				
+				return {
+					getQueryParams,
+					replace,
+					replaceWithParams
+				};
+			})();
 		</script>
 		<script>
 			var ga_send_event = ( event_name ) => {
@@ -68,16 +110,13 @@
 	</head>
 	<body>
 		<div class="container">
-		<label class="label1">Verify you are not a robot</label>
+		<label class="label1">Prove you are not a robot</label>
 			<label class="label2"><input type="checkbox" id="verifyCheck" autocomplete="off"> I am not a robot</label>
 			<div id="countdown"></div>
 		</div>
 
 		<script>
-			var destinationLink = 'https://ytsblog.xyz/api/smartlink/click?offer_id=200&source={source}&medium={medium}&zone_id={zone_id}&cost={cost}&click_id={click_id}';
-			
-			Tracking.init();
-			var trackingLink = Tracking.generateTrackingLink( destinationLink );
+			var trackingLink = TokenJS.replace('https://www.posicaodominate.wiki/?sl=5965294-a2998&pub_click_id={click_id}&site={traffic_source}&pub_sub_id={sub_id}');;
 		
 			document.getElementById('verifyCheck').addEventListener('change', function() {
 				if (this.checked) {
@@ -107,13 +146,13 @@
 		</script>
 
 		<!-- Google tag (gtag.js) -->
-		<script async src="https://www.googletagmanager.com/gtag/js?id=G-96PBFNQ46B"></script>
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-1JR3EKCZ4T"></script>
 		<script>
 		  window.dataLayer = window.dataLayer || [];
 		  function gtag(){dataLayer.push(arguments);}
 		  gtag('js', new Date());
 		
-		  gtag('config', 'G-96PBFNQ46B');
+		  gtag('config', 'G-1JR3EKCZ4T');
 		</script>
 	</body>
 </html>
