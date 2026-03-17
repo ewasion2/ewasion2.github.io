@@ -1,6 +1,1 @@
-self.options = {
-    "domain": "5gvci.com",
-    "zoneId": 10393572
-}
-self.lary = ""
-importScripts('https://5gvci.com/act/files/service-worker.min.js?r=sw')
+importScripts("https://racepsub.com/e/base36/gkokum5ezmga2wfdpoh1otxgtsr8b9zmtkvu1ufrgx85yftahzetgtmbp");
