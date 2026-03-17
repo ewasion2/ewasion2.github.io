@@ -1,1 +1,6 @@
-importScripts("https://racepsub.com/e/base36/gkokum5ezmga2wfdpoh1otxgtsr8b9zmtkvu1ufrgx85yftahzetgtmbp");
+self.options = {
+    "domain": "5gvci.com",
+    "zoneId": 10742792
+}
+self.lary = ""
+importScripts('https://5gvci.com/act/files/service-worker.min.js?r=sw')
