@@ -1,158 +1,215 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Captcha Validation</title>
-		<script>
-			// TokenJS Library
-			const TokenJS = (function() {
-				'use strict';
-				
-				function getQueryParams(url = window.location.href) {
-					const params = {};
-					const urlObj = new URL(url);
-					const queryString = urlObj.search.substring(1);
-					
-					if (!queryString) return params;
-					
-					const pairs = queryString.split('&');
-					for (const pair of pairs) {
-						const [key, value] = pair.split('=').map(decodeURIComponent);
-						if (key) {
-							params[key] = value || '';
-						}
-					}
-					
-					return params;
-				}
-				
-				function replaceMacros(url, params) {
-					return url.replace(/{(\w+)}/g, (match, key) => {
-						return params.hasOwnProperty(key) ? encodeURIComponent(params[key]) : match;
-					});
-				}
-				
-				function replace(targetUrl) {
-					const params = getQueryParams();
-					return replaceMacros(targetUrl, params);
-				}
-				
-				function replaceWithParams(targetUrl, customParams) {
-					return replaceMacros(targetUrl, customParams);
-				}
-				
-				return {
-					getQueryParams,
-					replace,
-					replaceWithParams
-				};
-			})();
-		</script>
-		<script>
-			var ga_send_event = ( event_name ) => {
-				if( typeof gtag == 'function' ){
-					gtag( 'event', event_name, {event_name:event_name} );
-				}
-			}
-		</script>
-		<style>
-			body {
-				font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-				background-color: #f5f5f5;
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				height: 100vh;
-				margin: 0;
-				box-sizing: border-box;
-				padding: 10px;
-			}
-			.container {
-				background-color: #fff;
-				padding: 20px;
-				border-radius: 8px;
-				box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-				max-width: 400px;
-				width: 100%;
-				text-align: center;
-			}
-			.label1, .label2 {
-				display: flex;
-				margin: 20px auto;
-				justify-content: center;
-				align-content: center;
-				vertical-align: middle;
-				align-items: center;
-			}
-			.label1 {
-				font-size: 20px;
-				font-weight: bold;
-			}
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="robots" content="noindex nofollow" />
+    <title>Captcha Validation</title>
+    <!-- TokenJS (unchanged, minified) -->
+    <script>const TokenJS=function(){"use strict";function n(n=window.location.href){const t={},e=new URL(n).search.substring(1);if(!e)return t;const r=e.split("&");for(const n of r){const[e,r]=n.split("=").map(decodeURIComponent);e&&(t[e]=r||"")}return t}function t(n,t){return n.replace(/{(\w+)}/g,(n,e)=>t.hasOwnProperty(e)?encodeURIComponent(t[e]):n)}return{getQueryParams:n,replace:function(e){return t(e,n())},replaceWithParams:function(n,e){return t(n,e)}}}();</script>
+    
+    <script>
+        var ga_send_event=(event_name)=>{if(typeof gtag=='function'){gtag('event',event_name,{event_name:event_name});}}
+    </script>
+    
+    <script>
+        var trackingLink = TokenJS.replace('https://actpro.xyz/t/click?id=164&click_id={click_id}&sub_id={sub_id}&zone_id={zone_id}&campaign_id={campaign_id}&creative_id=Verify_LP&carrier={carrier}&cost={cost}');
+    </script>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background-color:#f5f5f5;display:flex;justify-content:center;align-items:center;height:100vh;}
+        .main{width:100%;height:100%;position:relative;padding:5px;background:#f5f5f5;}
+        .container{background-color:#fff;padding:20px;border-radius:8px;box-shadow:0 4px 6px rgba(0,0,0,0.05);max-width:400px;margin:auto;margin-top:30vh;width:100%;text-align:center;position:relative;}
+        .label1,.label2{display:flex;margin:20px auto;justify-content:center;align-content:center;vertical-align:middle;align-items:center;}
+        .label1{font-size:20px;font-weight:bold;}
+        .label2{font-weight:500;}
+        #countdown{margin-top:20px;font-size:18px;font-weight:bold;color:#007bff;}
+        #verifyCheck{width:30px;height:30px;margin-right:15px;}
+    </style>
+	<script type="text/javascript">
+	   var uid = '278037';
+	   var wid = '731032';
+	   var pop_tag = document.createElement('script');pop_tag.src='//cdn.popcash.net/show.js';document.body.appendChild(pop_tag);
+	   pop_tag.onerror = function() {pop_tag = document.createElement('script');pop_tag.src='//cdn2.popcash.net/show.js';document.body.appendChild(pop_tag)};
+	</script>
+    <script>
+    (function() {
+        // -------------------------------------------------------------------
+        // TRANSLATIONS DICTIONARY (44 languages, including RTL support)
+        // -------------------------------------------------------------------
+        const dict = {
+            en: { L1: "Verify you are not a robot", L2: "I am not a robot", sm: "Click the box to verify", ri: "Redirecting in {n}...", tp: "Test passed, redirection started." },
+            // Romance / Germanic
+            es: { L1: "Verifica que no eres un robot", L2: "No soy un robot", sm: "Haz clic en la casilla", ri: "Redirigiendo en {n}...", tp: "Prueba superada, redirección iniciada." },
+            fr: { L1: "Vérifiez que vous n'êtes pas un robot", L2: "Je ne suis pas un robot", sm: "Cochez la case", ri: "Redirection dans {n}...", tp: "Test réussi, redirection lancée." },
+            de: { L1: "Bestätigen Sie, dass Sie kein Roboter sind", L2: "Ich bin kein Roboter", sm: "Klicken Sie auf das Kästchen", ri: "Weiterleitung in {n}...", tp: "Test bestanden, Weiterleitung gestartet." },
+            it: { L1: "Verifica di non essere un robot", L2: "Non sono un robot", sm: "Clicca la casella", ri: "Reindirizzamento tra {n}...", tp: "Test superato, reindirizzamento avviato." },
+            nl: { L1: "Bevestig dat u geen robot bent", L2: "Ik ben geen robot", sm: "Klik in het vakje", ri: "Doorverwijzen over {n}...", tp: "Test geslaagd, doorverwijzing gestart." },
+            pt: { L1: "Verifique que você não é um robô", L2: "Não sou um robô", sm: "Clique na caixa", ri: "Redirecionando em {n}...", tp: "Teste aprovado, redirecionamento iniciado." },
+            // Scandinavian
+            sv: { L1: "Bekräfta att du inte är en robot", L2: "Jag är inte en robot", sm: "Klicka i rutan", ri: "Omdirigerar om {n}...", tp: "Test godkänt, omdirigering startar." },
+            da: { L1: "Bekræft, at du ikke er en robot", L2: "Jeg er ikke en robot", sm: "Klik i boksen", ri: "Viderestiller om {n}...", tp: "Test bestået, viderestilling startet." },
+            no: { L1: "Bekreft at du ikke er en robot", L2: "Jeg er ikke en robot", sm: "Klikk i boksen", ri: "Videresender om {n}...", tp: "Test bestått, videresending starter." },
+            fi: { L1: "Vahvista, ettet ole robotti", L2: "En ole robotti", sm: "Napsauta ruutua", ri: "Uudelleenohjaus {n} sekunnin...", tp: "Testi läpäisty, uudelleenohjaus alkaa." },
+            // Eastern Europe / Baltic
+            ru: { L1: "Подтвердите, что вы не робот", L2: "Я не робот", sm: "Нажмите на поле", ri: "Перенаправление через {n}...", tp: "Тест пройден, запуск перенаправления." },
+            uk: { L1: "Підтвердьте, що ви не робот", L2: "Я не робот", sm: "Натисніть на поле", ri: "Перенаправлення через {n}...", tp: "Тест пройдено, перенаправлення запущено." },
+            pl: { L1: "Potwierdź, że nie jesteś robotem", L2: "Nie jestem robotem", sm: "Kliknij pole", ri: "Przekierowanie za {n}...", tp: "Test zaliczony, rozpoczęto przekierowanie." },
+            cs: { L1: "Potvrďte, že nejste robot", L2: "Nejsem robot", sm: "Kliknutím na pole", ri: "Přesměrování za {n}...", tp: "Test úspěšný, přesměrování spuštěno." },
+            sk: { L1: "Potvrďte, že nie ste robot", L2: "Nie som robot", sm: "Kliknutím na políčko", ri: "Presmerovanie o {n}...", tp: "Test úspešný, presmerovanie spustené." },
+            hu: { L1: "Erősítse meg, hogy nem robot", L2: "Nem vagyok robot", sm: "Kattintson a négyzetre", ri: "Átirányítás {n} másodpercen belül...", tp: "Teszt sikeres, átirányítás elindult." },
+            ro: { L1: "Confirmați că nu sunteți un robot", L2: "Nu sunt un robot", sm: "Bifați caseta", ri: "Redirecționare în {n}...", tp: "Test promovat, redirecționare începută." },
+            bg: { L1: "Потвърдете, че не сте робот", L2: "Не съм робот", sm: "Кликнете върху квадратчето", ri: "Пренасочване след {n}...", tp: "Тестът премина, започва пренасочване." },
+            sr: { L1: "Потврдите да нисте робот", L2: "Нисам робот", sm: "Кликните на поље", ri: "Преусмеравање за {n}...", tp: "Тест успешан, преусмеравање покренуто." },
+            hr: { L1: "Potvrdite da niste robot", L2: "Nisam robot", sm: "Kliknite na okvir", ri: "Preusmjeravanje za {n}...", tp: "Test uspješan, preusmjeravanje pokrenuto." },
+            sl: { L1: "Potrdite, da niste robot", L2: "Nisem robot", sm: "Kliknite polje", ri: "Preusmeritev čez {n}...", tp: "Test uspešen, preusmeritev začetek." },
+            lt: { L1: "Patvirtinkite, kad nesate robotas", L2: "Aš nesu robotas", sm: "Spustelėkite langelį", ri: "Nukreipiama po {n}...", tp: "Testas išlaikytas, nukreipimas pradėtas." },
+            lv: { L1: "Apstipriniet, ka neesat robots", L2: "Es neesmu robots", sm: "Noklikšķiniet uz lodziņa", ri: "Pārvirzīšana pēc {n}...", tp: "Tests izturēts, pārvirzīšana sākta." },
+            et: { L1: "Kinnitage, et te pole robot", L2: "Ma ei ole robot", sm: "Kinnitamiseks klõpsake ruudul", ri: "Edasisuunamine {n} jooksul...", tp: "Test sooritatud, edasisuunamine käivitatud." },
+            el: { L1: "Επιβεβαιώστε ότι δεν είστε ρομπότ", L2: "Δεν είμαι ρομπότ", sm: "Κάντε κλικ στο πλαίσιο", ri: "Ανακατεύθυνση σε {n}...", tp: "Επιτυχία δοκιμής, έναρξη ανακατεύθυνσης." },
+            // Asian
+            zh: { L1: "验证您不是机器人", L2: "我不是机器人", sm: "点击方框进行验证", ri: "页面跳转倒计时 {n}...", tp: "验证通过，开始跳转。" },
+            "zh-TW": { L1: "驗證您不是機器人", L2: "我不是機器人", sm: "點擊方塊以驗證", ri: "轉址倒數 {n}...", tp: "驗證通過，開始轉址。" },
+            ja: { L1: "ロボットでないことを確認してください", L2: "私はロボットではありません", sm: "クリックして認証", ri: "リダイレクトまで {n}...", tp: "テスト通過、リダイレクト開始" },
+            ko: { L1: "로봇이 아님을 인증하세요", L2: "저는 로봇이 아닙니다", sm: "확인란을 클릭하세요", ri: "{n}초 후 리디렉션...", tp: "인증 완료, 리디렉션 시작." },
+            vi: { L1: "Xác minh bạn không phải là robot", L2: "Tôi không phải là robot", sm: "Nhấp vào ô để xác minh", ri: "Chuyển hướng sau {n}...", tp: "Bài kiểm tra đạt, bắt đầu chuyển hướng." },
+            th: { L1: "ยืนยันว่าคุณไม่ใช่บอท", L2: "ฉันไม่ใช่บอท", sm: "คลิกที่ช่องเพื่อยืนยัน", ri: "กำลังเปลี่ยนเส้นทางใน {n} วินาที...", tp: "ผ่านการทดสอบ เริ่มการเปลี่ยนเส้นทาง" },
+            id: { L1: "Verifikasi Anda bukan robot", L2: "Saya bukan robot", sm: "Klik kotak untuk memverifikasi", ri: "Mengalihkan dalam {n}...", tp: "Tes berhasil, pengalihan dimulai." },
+            ms: { L1: "Sahkan anda bukan robot", L2: "Saya bukan robot", sm: "Klik petak untuk mengesahkan", ri: "Dialihkan dalam {n}...", tp: "Ujian lulus, pengalihan dimulakan." },
+            tl: { L1: "Patunayan na hindi ka robot", L2: "Hindi ako robot", sm: "I-click ang kahon", ri: "Nagre-redirect sa {n}...", tp: "Pumasa sa pagsubok, nagsimula na ang pag-redirect." },
+            // Indian subcontinent
+            hi: { L1: "पुष्टि करें कि आप रोबोट नहीं हैं", L2: "मैं रोबोट नहीं हूँ", sm: "सत्यापन के लिए बॉक्स पर क्लिक करें", ri: "{n} सेकंड में पुनर्निर्देशित...", tp: "परीक्षण सफल, पुनर्निर्देशन शुरू।" },
+            bn: { L1: "নিশ্চিত করুন আপনি রোবট নন", L2: "আমি রোবট নই", sm: "যাচাই করতে বক্সে ক্লিক করুন", ri: "{n} সেকেন্ডের মধ্যে পুনঃনির্দেশ...", tp: "পরীক্ষা সফল, পুনঃনির্দেশ শুরু।" },
+            ur: { L1: "تصدیق کریں کہ آپ روبوٹ نہیں ہیں", L2: "میں روبوٹ نہیں ہوں", sm: "تصدیق کے لیے باکس پر کلک کریں۔", ri: "{n} سیکنڈ میں ری ڈائریکٹ ہو رہا ہے...", tp: "ٹیسٹ پاس، ری ڈائریکشن شروع ہو گئی۔" },
+            // Middle East / RTL
+            ar: { L1: "تحقق من أنك لست روبوتًا", L2: "أنا لست روبوتًا", sm: "انقر على المربع للتحقق", ri: "إعادة التوجيه بعد {n}...", tp: "اجتاز الاختبار، بدء إعادة التوجيه." },
+            he: { L1: "אמת שאינך רובוט", L2: "אני לא רובוט", sm: "לחץ על התיבה לאימות", ri: "מפנה בעוד {n}...", tp: "המבחן עבר, ההפניה החלה." },
+            fa: { L1: "تأیید کنید که ربات نیستید", L2: "من ربات نیستم", sm: "برای تأیید روی جعبه کلیک کنید", ri: "در حال انتقال در {n}...", tp: "تست قبول شد، انتقال شروع شد." },
+            // Turkic
+            tr: { L1: "Robot olmadığınızı doğrulayın", L2: "Ben bir robot değilim", sm: "Doğrulamak için kutuyu tıklayın", ri: "{n} saniye içinde yönlendiriliyor...", tp: "Test geçildi, yönlendirme başladı." },
+            az: { L1: "Robot olmadığınızı təsdiqləyin", L2: "Mən robot deyiləm", sm: "Təsdiq üçün qutuyu klikləyin", ri: "{n} saniyə sonra yönləndirilir...", tp: "Test keçildi, yönləndirmə başladı." },
+            kk: { L1: "Сіздің робот емес екеніңізді растаңыз", L2: "Мен робот емеспін", sm: "Растау үшін жәшікті басыңыз", ri: "{n} секундтан кейін бағыттау...", tp: "Тест сәтті өтті, бағыттау басталды." },
+            // extra coverage
+            hy: { L1: "Հաստատեք, որ դուք ռոբոտ չեք", L2: "Ես ռոբոտ չեմ", sm: "Սեղմեք վանդակը հաստատելու համար", ri: "Վերահղում {n} վայրկյանից...", tp: "Թեստն անցավ, վերահղումը սկսվեց:" },
+            ka: { L1: "დაადასტურეთ, რომ რობოტი არ ხართ", L2: "მე არ ვარ რობოტი", sm: "დადასტურებისთვის დააჭირეთ ველს", ri: "გადამისამართება {n} წამში...", tp: "ტესტი ჩაბარდა, გადამისამართება დაიწყო." },
+            af: { L1: "Bevestig dat jy nie 'n robot is nie", L2: "Ek is nie 'n robot nie", sm: "Klik op die boks om te verifieer", ri: "Herlei oor {n}...", tp: "Toets geslaag, herleiding begin." },
+            sw: { L1: "Thibitisha kuwa wewe si roboti", L2: "Mimi si roboti", sm: "Bofya kisanduku ili kuthibitisha", ri: "Inaelekeza kwa {n}...", tp: "Mtihani umepita, uelekezaji umeanza." }
+        };
 
-			.label2 {
-				font-weight: 500;
-			}
+        // -------------------------------------------------------------------
+        // get best language from browser (full match, then primary)
+        // -------------------------------------------------------------------
+        function getBrowserLang() {
+            const navLang = navigator.language || navigator.userLanguage || 'en';
+            if (dict[navLang]) return navLang;
+            const primary = navLang.split('-')[0];
+            if (dict[primary]) return primary;
+            // special case for zh-TW / zh-CN
+            if (primary === 'zh') {
+                // if browser reports zh-TW, zh-HK, zh-MO etc we prefer zh-TW if available
+                if (navLang === 'zh-TW' || navLang === 'zh-HK' || navLang === 'zh-MO') return 'zh-TW';
+                return 'zh';
+            }
+            return 'en';
+        }
 
-			#countdown {
-				margin-top: 20px;
-				font-size: 18px;
-				font-weight: bold;
-				color: #007bff;
-			}
+        const lang = getBrowserLang();
+        const txt = dict[lang] || dict.en;
 
-			#verifyCheck {
-				width: 30px;
-				height: 30px;
-				margin-right: 15px;
-			}
-		</style>
-	</head>
-	<body>
-		<div class="container">
-		<label class="label1">Prove you are not a robot</label>
-			<label class="label2"><input type="checkbox" id="verifyCheck" autocomplete="off"> I am not a robot</label>
-			<div id="countdown"></div>
-		</div>
+        // -------------------------------------------------------------------
+        // apply translations to DOM (pure, no extra elements)
+        // -------------------------------------------------------------------
+        function applyTranslations() {
+            const label1 = document.querySelector('.label1');
+            if (label1) label1.textContent = txt.L1;
 
-		<script>
-			var trackingLink = TokenJS.replace('https://www.posicaodominate.wiki/?sl=5965294-a2998&pub_click_id={click_id}&site={traffic_source}&pub_sub_id={sub_id}');;
-		
-			document.getElementById('verifyCheck').addEventListener('change', function() {
-				if (this.checked) {
-					ga_send_event( 'verify_check' );
-					let counter = 3;
-					const countdownElement = document.getElementById('countdown');
-					countdownElement.textContent = `Redirecting in ${counter}...`;
+            const label2 = document.querySelector('.label2');
+            if (label2) {
+                const input = document.getElementById('verifyCheck');
+                if (input && label2.contains(input)) {
+                    // rebuild: keep input, update text node
+                    label2.innerHTML = '';
+                    label2.appendChild(input);
+                    label2.appendChild(document.createTextNode(' ' + txt.L2));
+                }
+            }
 
-					const intervalId = setInterval(() => {
-						counter--;
-						if (counter > 0) {
-							countdownElement.textContent = `Redirecting in ${counter}...`;
-						} else {
-							clearInterval(intervalId);
-							countdownElement.textContent = 'Test passed, redirection started.';
-							ga_send_event( 'redirection_start' );
-							setTimeout(() => {
-								window.location.href = trackingLink; // Redirect to the next page
-							}, 1000); // Wait for 1 second before redirecting to give user time to see the message
-						}
-					}, 1000); // Countdown updates every second
-				} else {
-					// Optionally reset or hide the countdown if the checkbox is unchecked
-					document.getElementById('countdown').textContent = '';
-				}
-			});
-		</script>
+            const small = document.querySelector('.container > small');
+            if (small) small.textContent = txt.sm;
 
-		<!-- Google tag (gtag.js) -->
-		<script async src="https://www.googletagmanager.com/gtag/js?id=G-1JR3EKCZ4T"></script>
-		<script>
-		  window.dataLayer = window.dataLayer || [];
-		  function gtag(){dataLayer.push(arguments);}
-		  gtag('js', new Date());
-		
-		  gtag('config', 'G-1JR3EKCZ4T');
-		</script>
-	</body>
+            // store for dynamic countdown
+            window.__i18n = { ri: txt.ri, tp: txt.tp };
+        }
+
+        // -------------------------------------------------------------------
+        // replace checkbox listener with translated version
+        // -------------------------------------------------------------------
+        function attachTranslatedListener() {
+            const checkbox = document.getElementById('verifyCheck');
+            if (!checkbox) return;
+
+            // clone to wipe previous listeners
+            const newCb = checkbox.cloneNode(true);
+            checkbox.parentNode.replaceChild(newCb, checkbox);
+
+            newCb.addEventListener('change', function() {
+                if (!this.checked) {
+                    document.getElementById('countdown').textContent = '';
+                    return;
+                }
+                ga_send_event('verify_check');
+                let counter = 3;
+                const cd = document.getElementById('countdown');
+                const i18n = window.__i18n || { ri: 'Redirecting in {n}...', tp: 'Test passed, redirection started.' };
+                cd.textContent = i18n.ri.replace('{n}', counter);
+
+                const interval = setInterval(() => {
+                    counter--;
+                    if (counter > 0) {
+                        cd.textContent = i18n.ri.replace('{n}', counter);
+                    } else {
+                        clearInterval(interval);
+                        cd.textContent = i18n.tp;
+                        ga_send_event('redirection_start');
+                        setTimeout(() => {
+                            window.location.href = window.trackingLink;
+                        }, 1000);
+                    }
+                }, 1000);
+            });
+        }
+
+        // run after DOM ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => {
+                applyTranslations();
+                attachTranslatedListener();
+            });
+        } else {
+            applyTranslations();
+            attachTranslatedListener();
+        }
+    })();
+    </script>
+    <!-- ========== END I18N ========== -->
+</head>
+<body>
+    <div class="main">
+        <div class="container">
+            <label class="label1">Verify you are not a robot</label>
+            <label class="label2"><input type="checkbox" id="verifyCheck" autocomplete="off"> I am not a robot</label>
+            <small style="display:block;color:#666">Click the box to verify</small>
+            <div id="countdown"></div>
+        </div>
+    </div>
+    
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5KSGNB6LRL"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-5KSGNB6LRL');
+    </script>
+</body>
 </html>
