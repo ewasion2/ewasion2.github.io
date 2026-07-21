@@ -56,3 +56,4 @@ url("./fonts/bootstrap-icons.woff?dd67030699838ea613ee6dbda90effa6") format("wof
 .bi-image-fill::before { content: "\f429"; }
 .bi-image::before { content: "\f42a"; }
 .bi-asterisk::before { content: "\f151"; }
+.bi-telegram::before { content:"\f5B3"; }
